@@ -30,28 +30,6 @@ average_transport_sleep_sums = {}
 average_evening_sleep_sums = {}
 average_school_sleep_sums = {}
 
-#možums skolā
-for age in range(11, 18):
-    total_sum = 0
-    count = 0
-
-    for row in all_values:
-        if row[age_column] == str(age):
-            points = int(row[alertness_points_column])
-
-            total_sum += points
-            count += 1
-
-    if count > 0:
-        average_alertness_sum = total_sum / count
-        average_alertness_sums[f"Age_{age}"] = average_alertness_sum
-    else:
-        average_alertness_sums[f"Age_{age}"] = None
-
-for age, average_alertness_sum in average_alertness_sums.items():
-    if average_alertness_sum is not None:
-        print(f"mozums skola {age}: {average_alertness_sum:.2f}")
-
 #miegainība transportā
 for age in range(11, 18):
     total_sum = 0
@@ -73,6 +51,28 @@ for age in range(11, 18):
 for age, average_transport_sleep_sum in average_transport_sleep_sums.items():
     if average_transport_sleep_sum is not None:
         print(f"miegainiba transporta {age}: {average_transport_sleep_sum:.2f}")
+        
+#možums skolā
+for age in range(11, 18):
+    total_sum = 0
+    count = 0
+
+    for row in all_values:
+        if row[age_column] == str(age):
+            points = int(row[alertness_points_column])
+
+            total_sum += points
+            count += 1
+
+    if count > 0:
+        average_alertness_sum = total_sum / count
+        average_alertness_sums[f"Age_{age}"] = average_alertness_sum
+    else:
+        average_alertness_sums[f"Age_{age}"] = None
+
+for age, average_alertness_sum in average_alertness_sums.items():
+    if average_alertness_sum is not None:
+        print(f"mozums skola {age}: {average_alertness_sum:.2f}")
 
 #miegainība vakarā
 for age in range(11, 18):
